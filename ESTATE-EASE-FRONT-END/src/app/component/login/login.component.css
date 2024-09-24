@@ -1,0 +1,100 @@
+.register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  background: rgba(240, 248, 255, 0.7); /* light color theme */
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.register-form {
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+  font-family: 'Optima', 'Segoe', 'Candara', sans-serif;
+}
+
+.register-form h2 {
+  color: #4a4a4a;
+  margin-bottom: 20px;
+}
+
+.input-group {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.input-group input {
+  position: relative;
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.password-group {
+  position: relative;
+}
+
+.toggle-password {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #888;
+}
+
+#forgot-pass-link {
+  display: inline-block;
+  margin-bottom: 10px;
+  text-align: left !important;
+  color: #9d00ff;
+  font-size: 14px;
+}
+
+.forgot-pass-link:hover {
+  text-decoration: underline;
+}
+.Signin-button {
+  background-color: #007bff;
+  color: white;
+  padding: 15px;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+/* When the button is disabled */
+.disabled-button {
+  cursor: not-allowed;
+  opacity: 0.6; /* Optional: Makes the button look disabled */
+}
+
+.register-button:hover {
+  background-color: #0056b3;
+}
+
+.sign-in-link {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #888;
+}
+
+.sign-in-link a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.sign-in-link a:hover {
+  text-decoration: underline;
+}

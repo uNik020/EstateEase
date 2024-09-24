@@ -1,0 +1,59 @@
+<!-- <app-navbar></app-navbar>
+<div class="register-container">
+  <form class="register-form" (ngSubmit)="onSubmit()" #login_form="ngForm">
+    <h2>Sign in</h2>
+
+    <div class="input-group">
+      <input [(ngModel)]="user.email" type="email" placeholder="Email" name="email" required />
+    </div>
+
+    <div class="input-group password-group">
+      <input [(ngModel)]="user.password" type="password" placeholder="Password" name="password" required #password />
+      <span class="toggle-password" (click)="togglePasswordVisibility(password)">
+        <i [ngClass]="passwordVisible ? 'fas fa-eye-slash' : 'fas fa-eye'"></i>
+      </span>
+    </div>
+
+    <a id="forgot-pass-link" routerLink="/forgotpass">Forgot password?</a>
+    <br>
+    <button type="submit" class="Signin-button">Sign in</button>
+    
+    <p class="sign-in-link">Don't have an account? <a routerLink="/register">Sign up</a></p>
+    
+  </form>
+</div>
+<app-footer></app-footer> -->
+
+<app-navbar></app-navbar>
+<div class="register-container">
+  <form class="register-form" (ngSubmit)="onSubmit()" #login_form="ngForm" novalidate>
+    <h2>Sign in</h2>
+
+    <!-- Email input with validation -->
+    <div class="input-group">
+      <input [(ngModel)]="user.email" type="email" placeholder="Email" name="email" required email #email="ngModel" />
+      <!-- Validation messages -->
+      <small *ngIf="email.invalid && email.touched" class="text-danger">
+        <span *ngIf="email.errors?.['required']">Email is required.</span>
+        <span *ngIf="email.errors?.['email']">Enter a valid email address.</span>
+      </small>
+    </div>
+
+    <div class="input-group password-group">
+      <input [(ngModel)]="user.password" type="password" placeholder="Password" name="password" required #password />
+      <span class="toggle-password" (click)="togglePasswordVisibility(password)">
+        <i [ngClass]="passwordVisible ? 'fas fa-eye-slash' : 'fas fa-eye'"></i>
+      </span>
+    </div>
+
+    <a id="forgot-pass-link" routerLink="/forgotpass">Forgot password?</a>
+    <br>
+    
+    <!-- Sign-in button disabled if form is invalid -->
+    <button type="submit" class="Signin-button" [disabled]="login_form.invalid" [ngClass]="{'disabled-button': login_form.invalid}">Sign in</button>
+    
+    <p class="sign-in-link">Don't have an account? <a routerLink="/register">Sign up</a></p>
+    
+  </form>
+</div>
+<app-footer></app-footer>

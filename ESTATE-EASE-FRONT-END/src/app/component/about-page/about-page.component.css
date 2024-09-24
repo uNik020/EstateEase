@@ -1,0 +1,34 @@
+/* Custom CSS for styling */
+.container-fluid {
+    padding: 4rem 3rem; /* Adjust top padding for header */
+    background: linear-gradient(to bottom right, #19A7CE, #146C94); /* Background gradient */
+    min-height: 90%;
+    margin: 0 auto; /* Center the container */
+    width: 80%; /* Set width to account for margins */
+}
+
+.info-container {
+    display: flex; /* Ensure flex container is used */
+    justify-content: space-between;
+}
+
+.info {
+    flex: 1;
+    padding: 40px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    margin-right: 20px; /* Add margin between info and image */
+}
+
+.info h2 {
+    font-weight: bold;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.info p {
+    font-size: 18px;
+    line-height: 1.6;
+}

@@ -1,0 +1,18 @@
+.container{
+    min-height: 105%;
+}
+.login{
+    width: 90px;
+}
+.body{
+    background-image: url("../../../assets/5040007.jpg");
+    background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        min-height: 105%;
+        width: 100%;
+}
+
+h1,label,p{
+    color: white;
+}

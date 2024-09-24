@@ -1,0 +1,41 @@
+<app-navbar></app-navbar>
+<div class="property-details-container">
+  <div class="property-details">
+    <div class="property-image">
+      <img [src]="'assets/'+ property?.propertyImgPath" alt="Property Image">
+      
+    </div>
+    <div class="property-info">
+      <h1>{{ property?.propertyType }} {{ property?.propertyStatus }}</h1>
+      <h2>{{ property?.price | currency:'INR' }}</h2>
+      <p class="location">
+        <i class="fas fa-map-marker-alt"></i> {{ property?.location?.city }}, {{ property?.location?.state }}, {{ property?.location?.country }} - {{ property?.location?.pin }}
+      </p>
+      <div class="property-meta">
+        <span><i class="fas fa-expand"></i> {{ property?.area }} Sqft</span>
+        <span><i class="fas fa-bed"></i> {{ property?.bedrooms }} Bed</span>
+        <span><i class="fas fa-bath"></i> {{ property?.bathrooms }} Bath</span>
+      </div>
+      <div class="property-description">
+        <p>{{ property?.description }}</p>
+      </div>
+      <!-- Action Buttons -->
+      <div class="property-actions">
+
+
+<!-- Buy Button for Other Users -->
+<button class="btn buy-now" 
+*ngIf="property?.owner !== loggedInUser" 
+(click)="buyProperty(property?.propertyId,property?.price)">
+Buy Now
+</button>
+<button class="btn wishlist"  (click)="addToWishlist(property)"
+[disabled]="isPropertyInWishlist(property?.propertyId)"
+>
+{{ isPropertyInWishlist(property?.propertyId) ? 'In Wishlist' : 'Add to Wishlist' }}</button>
+
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

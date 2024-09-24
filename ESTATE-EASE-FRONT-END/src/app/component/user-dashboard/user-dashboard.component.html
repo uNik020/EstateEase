@@ -1,0 +1,205 @@
+<app-navbar></app-navbar>
+<div class="main">
+
+<div class="container-fluid dashboard-container">
+    <div class="row">
+      <!-- Sidebar -->
+      <nav class="col-md-3 col-lg-2 sidebar bg-dark text-white">
+        <div class="sidebar-header text-center py-4">
+          <img src="../../../assets/user profile.jpg" alt="Profile" class="profile-icon rounded-circle">
+          <h4>{{username}}</h4>
+        </div>
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link text-white active" (click)="showSection('Overview')">Overview</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" (click)="showSection('MyListings')">My Listings</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" (click)="showSection('Wishlist')">Wishlist</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" (click)="showSection('Favorites')">Favorites</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" (click)="showSection('Transactions')">Transactions</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" routerLink="/forgotpass">Change Password</a>
+          </li>
+        </ul>
+      </nav>
+  
+      <!-- Main Content -->
+      <main class="col-md-9 col-lg-10 main-content">
+        <!-- Header -->
+        <header class="d-flex justify-content-between align-items-center py-3 border-bottom">
+          <h1>Welcome, {{username}}</h1>
+        </header>
+  
+        <!-- Dashboard Stats -->
+        <section id="Overview" class="dashboard-stats mt-4" *ngIf="activeSection === 'Overview'" style="background-color: lightblue;">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="card stat-box">
+                <div class="card-body text-center">
+                  <h3>Total Properties</h3>
+                  <p>{{ totalPropertiesCount }}</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card stat-box">
+                <div class="card-body text-center">
+                  <h3>Responses</h3>
+                  <p>10</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card stat-box">
+                <div class="card-body text-center">
+                  <h3>Active Listings</h3>
+                  <p>{{ activeListingsCount }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!---MyListing-->
+        <section id="MyListings" *ngIf="activeSection === 'MyListings'">
+          <h2>My Properties Listings</h2>
+          <div class="property-cards">
+            <div class="property-card" *ngFor="let property of myListings" (click)="navigateToDetails(property.propertyId)">
+              <img [src]="'assets/' + (property.propertyImgPath || 'default-property.jpg')" alt="Property Image">
+              <span class="badge for-sell">{{ property.propertyStatus }}</span>
+              <span class="badge type">{{ property.propertyType }}</span>
+              <div class="property-info">
+                <h3>{{ property.price | currency:'INR' }}</h3>
+                 <!-- Heart Icon for Favorites -->
+        <i class="favorite-icon fas fa-heart"
+        [class.favorited]="isFavorited(property.propertyId)" 
+        (click)="toggleFavorite(property.propertyId,$event)">
+      </i>
+        <i class="delete-icon fa fa-trash" (click)="deleteProperty(property.propertyId,$event)"></i> <!-- Delete icon -->
+                <p><i class="fas fa-map-marker-alt"></i> {{ property.location.city }}, {{ property.location.state }}, {{ property.location.country }} - {{ property.location.pin }}</p>
+                <div class="property-meta">
+                  <span><i class="fas fa-expand"></i> {{ property.area }} Sqft</span>
+                  <span><i class="fas fa-bed"></i> {{ property.bedrooms }} Bed</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+
+       <!---Wishlist-->
+<section id="Wishlist" *ngIf="activeSection === 'Wishlist'">
+  <h2>My Wishlist</h2>
+  <div class="property-cards">
+    <div class="property-card" *ngFor="let wishlistItem of wishlist" (click)="navigateToDetails(wishlistItem.property.propertyId)">
+      <img [src]="'assets/' + (wishlistItem.property.propertyImgPath || 'default-property.jpg')" alt="Property Image">
+      <span class="badge for-sell">{{ wishlistItem.property.propertyStatus }}</span>
+      <span class="badge type">{{ wishlistItem.property.propertyType }}</span>
+      <div class="property-info">
+        <h3>{{ wishlistItem.property.price | currency:'INR' }}</h3>
+        
+        <!-- Heart Icon for Favorites -->
+        <i class="favorite-icon fas fa-heart"
+           [class.favorited]="isFavorited(wishlistItem.property.propertyId)" 
+           (click)="toggleFavorite(wishlistItem.property.propertyId, $event)">
+        </i>
+        <i class="delete-icon fa fa-trash" (click)="removeFromWishlist(wishlistItem.property.propertyId,$event)"></i> <!-- Delete icon -->
+        <p>
+          <i class="fas fa-map-marker-alt"></i> 
+          {{ wishlistItem.property.location?.city }}, 
+          {{ wishlistItem.property.location?.state }}, 
+          {{ wishlistItem.property.location?.country }} - 
+          {{ wishlistItem.property.location?.pin }}
+        </p>
+        <div class="property-meta">
+          <span><i class="fas fa-expand"></i> {{ wishlistItem.property.area }} Sqft</span>
+          <span><i class="fas fa-bed"></i> {{ wishlistItem.property.bedrooms }} Bed</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  
+        <!-- Favorites Section -->
+<section id="Favorites" class="favorites-list mt-5" *ngIf="activeSection === 'Favorites'">
+  <h2>Favorite Properties</h2>
+  <div class="property-cards">
+    <div class="property-card" *ngFor="let property of favoriteProperties" (click)="navigateToDetails(property.propertyId)">
+      <img [src]="'assets/' + (property.propertyImgPath || 'default-property.jpg')" alt="Property Image">
+      <span class="badge for-sell">{{ property.propertyStatus }}</span>
+      <span class="badge type">{{ property.propertyType }}</span>
+      <div class="property-info">
+        <h3>{{ property.price | currency:'INR' }}</h3>
+        <!-- Heart Icon for Favorites -->
+        <i class="favorite-icon fas fa-heart"
+           [class.favorited]="isFavorited(property.propertyId)"
+           (click)="toggleFavorite(property.propertyId, $event)">
+        </i>
+        <p><i class="fas fa-map-marker-alt"></i> {{ property.location.city }}, {{ property.location.state }}, {{ property.location.country }} - {{ property.location.pin }}</p>
+        <div class="property-meta">
+          <span><i class="fas fa-expand"></i> {{ property.area }} Sqft</span>
+          <span><i class="fas fa-bed"></i> {{ property.bedrooms }} Bed</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+       <!-- Transactions Section -->
+<section id="Transactions" *ngIf="activeSection === 'Transactions'">
+  <div class="table">
+    <div class="transaction-header">
+      <h2>User Transactions</h2>
+      <button class="clear-transaction" (click)="clearTransactions()">Clear Transactions</button>
+    </div>
+    <table class="transaction-table">
+      <thead>
+        <tr>
+          <th>Transaction ID</th>
+          <th>Owner ID</th>
+          <th>Buyer ID</th>
+          <th>Property ID</th>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Amount</th>
+          <th>Payment Status</th>
+        </tr>
+      </thead>
+      <tbody *ngIf="transactions.length > 0; else noTransactions">
+        <tr *ngFor="let transaction of transactions">
+          <td>{{ transaction.transactionId }}</td>
+          <td>{{ transaction.owner.userId }}</td>
+          <td>{{ transaction.buyer.userId }}</td>
+          <td>{{ transaction.propertyId }}</td>
+          <td>{{ transaction.date | date: 'shortDate' }}</td>
+          <td>{{ transaction.time }}</td>
+          <td>{{ transaction.amount | currency:'INR' }}</td>
+          <td>{{ transaction.paymentStatus }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <ng-template #noTransactions>
+      <div>No transactions available.</div>
+    </ng-template>
+  </div>
+</section>
+
+
+
+      </main>
+    </div>
+  </div>    
+</div>
+<app-footer></app-footer>

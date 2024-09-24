@@ -1,0 +1,99 @@
+.property-details-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  
+}
+
+.property-details {
+  display: flex;
+  flex-wrap: wrap;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.property-image img {
+  width: 100%;
+  max-height: 500px;
+  object-fit: cover;
+}
+
+.property-info {
+  padding: 20px;
+  flex: 1;
+}
+
+.property-meta span {
+  margin-right: 15px;
+}
+
+.property-description {
+  margin: 15px 0;
+}
+
+.property-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.property-actions .btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.buy-now {
+  background-color: #007bff;
+  color: white;
+}
+.update-now {
+  background-color: #82e4eb;
+  color: rgb(0, 0, 0);
+}
+.wishlist {
+  background-color: #f0f0f0;
+  color: black;
+}
+
+.favorite {
+  background-color: #ffcc00;
+  color: black;
+}
+
+@media (max-width: 768px) {
+  .property-details {
+    flex-direction: column;
+  }
+  
+  .property-info {
+    padding: 15px;
+  }
+}
+
+
+  /* Style for the heart icon */
+  .favorite-icon {
+    font-size: 23px;
+    
+    position: absolute;
+    top: 205px;
+    right: 10px;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1;
+    pointer-events: auto; /* Ensure it catches click events */
+  }
+
+.favorite-icon:hover {
+  color: #ff6666; /* Hover color */
+}
+
+/* When favorited */
+.favorite-icon.favorited {
+  color: #ff6666; /* Favorite color when clicked */
+}

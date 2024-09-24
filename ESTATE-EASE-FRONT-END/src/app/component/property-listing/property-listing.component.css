@@ -1,0 +1,141 @@
+
+/**Property Listings***/
+.property-listing-container {
+    padding: 20px;
+    background-color: #f7f9fc;
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+  
+  .property-listing-container h2 {
+    font-size: 32px;
+    color: #1a1a1a;
+  }
+  
+  .property-listing-container p {
+    font-size: 16px;
+    color: #888888;
+    margin-bottom: 20px;
+  }
+  
+  .filter-buttons {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+  }
+  
+  .filter-buttons .btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    margin-right: 10px;
+    cursor: pointer;
+  }
+  
+  .property-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .property-card {
+    position: relative;
+    /**width: calc(33.333% - 20px);**/
+    width: auto;
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .property-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .property-card img {
+    width: 300px;
+    height: 200px;
+    object-fit:cover;
+  }
+  
+  .badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background-color: #007bff;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+  }
+  
+  .badge.for-sell {
+    background-color: #007bff;
+    left: 10px;
+  }
+  
+  .badge.for-rent {
+    background-color: #ff4d4d;
+  }
+  
+  .badge.type {
+    left: auto;
+    right: 15px;
+  }
+  
+  .property-info {
+    padding: 15px;
+  }
+  
+  .property-info h3 {
+    font-size: 24px;
+    color: #007bff;
+  }
+  
+  .property-info h4 {
+    font-size: 18px;
+    color: #1a1a1a;
+    margin-bottom: 10px;
+  }
+  
+  .property-info p {
+    font-size: 14px;
+    color: #888888;
+    margin-bottom: 10px;
+  }
+  
+  .property-meta {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .property-meta span {
+    font-size: 14px;
+    color: #888888;
+  }
+  
+  /* Style for the heart icon */
+  .favorite-icon {
+    font-size: 23px;
+    color: #d8d1d1;
+    position: absolute;
+    top: 205px;
+    right: 10px;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1;
+    pointer-events: auto; /* Ensure it catches click events */
+  }
+
+.favorite-icon:hover {
+  color: #ff6666; /* Hover color */
+}
+
+/* When favorited */
+.favorite-icon.favorited {
+  color: #ff6666; /* Favorite color when clicked */
+}

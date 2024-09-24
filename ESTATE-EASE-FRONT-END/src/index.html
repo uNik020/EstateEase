@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>EstateEase</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- src/index.html -->
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+
+
+</head>
+<body>
+  <script>
+    (function (w, d, s, o, f, js, fjs) {
+      w["botsonic_widget"] = o;
+      w[o] =
+        w[o] ||
+        function () {
+          (w[o].q = w[o].q || []).push(arguments);
+        };
+      (js = d.createElement(s)), (fjs = d.getElementsByTagName(s)[0]);
+      js.id = o;
+      js.src = f;
+      js.async = 1;
+      fjs.parentNode.insertBefore(js, fjs);
+    })(window, document, "script", "Botsonic", "https://widget.botsonic.com/CDN/botsonic.min.js");
+    Botsonic("init", {
+      serviceBaseUrl: "https://api-azure.botsonic.ai",
+      token: "3091d52c-2687-4e2f-91ee-10c025a741f0",
+    });
+  </script>
+
+  <app-login></app-login>
+  <app-forgotpass></app-forgotpass>
+  <app-root></app-root>
+  <app-register></app-register>
+
+</body>
+</html>

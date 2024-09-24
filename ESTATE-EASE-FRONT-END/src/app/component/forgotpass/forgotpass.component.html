@@ -1,0 +1,42 @@
+<app-navbar></app-navbar>
+<div class="body">
+  <div class="container" >
+  <div class="row justify-content-center pt-3">
+      <div class="col-md-5" >
+  <form [formGroup]="forgotPasswordForm" (ngSubmit)="resetPassword()">
+     <h1 class="text-center "><b>Forgot Password</b></h1><br>
+     <div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" formControlName="email" placeholder="Enter your email">
+        <div *ngIf="forgotPasswordForm.get('email')?.invalid && (forgotPasswordForm.get('email')?.dirty || forgotPasswordForm.get('email')?.touched)">
+          <small *ngIf="forgotPasswordForm.get('email')?.errors?.['required']" class="text-danger">Email is required.</small>
+          <small *ngIf="forgotPasswordForm.get('email')?.errors?.['email']" class="text-danger">Please enter a valid email address.</small>
+        </div>
+     </div>
+      <div *ngIf="otpSent">
+         <label for="otp">OTP:</label>
+         <input type="text" id="otp" formControlName="otp">
+      </div>
+      <div>
+         <button type="button" (click)="sendOtp()" *ngIf="!otpSent">Send OTP</button>
+         <button type="button" (click)="resendOtp()" *ngIf="otpSent && timerValue == 150">Resend OTP</button>
+         <span *ngIf="otpSent && timerValue > 0 && timerValue != 150">Resend OTP in {{timerValue}} seconds</span>
+      </div>
+      <div>
+        <label for="password">New Password:</label>
+        <input type="password" id="password" formControlName="password" placeholder="Enter new password">
+        <div *ngIf="forgotPasswordForm.get('password')?.invalid && (forgotPasswordForm.get('password')?.dirty || forgotPasswordForm.get('password')?.touched)">
+          <small *ngIf="forgotPasswordForm.get('password')?.errors?.['required']" class="text-danger">New Password is required.</small>
+          <small *ngIf="forgotPasswordForm.get('password')?.errors?.['minlength']" class="text-danger">New Password must be at least 6 characters long.</small>
+          <small class="text-danger" *ngIf="forgotPasswordForm.get('password')?.errors?.['pattern']">New Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character.</small>
+        </div>
+     </div>
+      <div>
+         <button type="submit" [disabled]="!forgotPasswordForm.valid">Reset Password</button>
+      </div>
+     </form>
+  </div>
+  </div>
+  </div>
+  </div>
+  <app-footer></app-footer>

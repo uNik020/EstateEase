@@ -1,0 +1,60 @@
+.container-fluid{
+    min-height: 86%;
+  }
+  .back {
+      color: #007bff;
+    }
+    .btn{
+      cursor: pointer;
+      position:centre;
+    }
+    
+    .card {
+      font-weight: bold;
+      padding: 20px;
+      color: dark grey;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    .form-control {
+      margin-bottom: 1rem;
+    }
+    
+    /* h1{
+      font-weight: bold;
+      color: #333 ;
+    } */
+  
+  .btn{
+    cursor: pointer;
+    position:centre;
+  }
+  
+  
+  
+  .form-control {
+    margin-bottom: 1rem;
+  }
+  
+  #email,#name{
+      cursor: not-allowed;
+  }
+  
+  /* h1{
+    font-weight: bold;
+    color: #333 ;
+  } */
+
+  .send-btn {
+    background-color: #007bff;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.send-btn:hover {
+    background-color: #00a2ff;
+}

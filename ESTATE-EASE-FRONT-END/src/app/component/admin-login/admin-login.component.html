@@ -1,0 +1,19 @@
+<app-navbar></app-navbar>
+<div class="body">
+ <div class="container" > 
+ <div class="row justify-content-center ">
+     <div class="col-md-5 border p-5 mt-5 bg-dark" >
+         <form class="w-100">
+             <h1 class="text-center "><b>Admin Login</b></h1><br>
+             <label><b>Email Address</b> </label><br>
+             <input class="form-control" placeholder="username" type="email" [(ngModel)]="username" name="username"/><br>
+             <label><b>Password</b></label><br> 
+             <input class="form-control" placeholder="password" type="password" [(ngModel)]="password" name="password"  /><br>
+             <div class="text-center">
+             <button (click)="handlelogin()"  class="btn btn-success ">Login</button><br>
+             </div>
+         </form>
+     </div>
+ </div>
+ </div>
+ <app-footer></app-footer>

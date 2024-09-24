@@ -1,0 +1,272 @@
+.main{
+  margin-left: 10%;
+  margin-right: 10%;
+  display: flex;
+  flex-direction: row;
+}
+
+/* Sidebar */
+.sidebar {
+  height: 100vh;
+  width: 220px;
+  padding: 0;
+  position: absolute;
+  background-color: #343a40;
+  overflow-y: auto; /* Enable scrolling inside the navbar */
+  z-index: 1000;   /* Ensures it stays on top of other content */
+}
+
+.sidebar-header {
+  background-color: #007bff;
+}
+
+.profile-icon {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.nav-link {
+  padding: 15px;
+  font-size: 18px;
+}
+
+.nav-link.active {
+  background-color: #007bff;
+}
+
+/* Main Content */
+.main-content {
+  margin-left: 220px;
+  position: relative;
+  padding: 20px;
+  height: 100vh;      /* Full view height */
+  overflow-y: auto;   /* Enables scrolling on the content only */
+  
+}
+
+/* Dashboard Stats */
+.stat-box {
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.stat-box h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.stat-box p {
+  font-size: 1.25rem;
+  color: #007bff;
+}
+
+/* Property Cards */
+/**Property Listings***/
+.property-listing-container {
+  padding: 20px;
+  background-color: #f7f9fc;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.property-listing-container h2 {
+  font-size: 32px;
+  color: #1a1a1a;
+}
+
+.property-listing-container p {
+  font-size: 16px;
+  color: #888888;
+  margin-bottom: 20px;
+}
+
+.filter-buttons {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+.filter-buttons .btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.property-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.property-card {
+  position: relative;
+  /**width: calc(33.333% - 20px);**/
+  width: auto;
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.property-card:hover {
+  transform: translateY(-5px);
+}
+
+.property-card img {
+  width: 300px;
+  height: 200px;
+  object-fit:cover;
+}
+
+.badge {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background-color: #007bff;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.badge.for-sell {
+  background-color: #007bff;
+  left: 10px;
+}
+
+.badge.for-rent {
+  background-color: #ff4d4d;
+}
+
+.badge.type {
+  left: auto;
+  right: 15px;
+}
+
+.property-info {
+  padding: 15px;
+}
+
+.property-info h3 {
+  font-size: 24px;
+  color: #007bff;
+}
+
+.property-info h4 {
+  font-size: 18px;
+  color: #1a1a1a;
+  margin-bottom: 10px;
+}
+
+.property-info p {
+  font-size: 14px;
+  color: #888888;
+  margin-bottom: 10px;
+}
+
+.property-meta {
+  display: flex;
+  justify-content: space-between;
+}
+
+.property-meta span {
+  font-size: 14px;
+  color: #888888;
+}
+
+ /* Style for the heart icon */
+ .favorite-icon {
+  font-size: 23px;
+  color: #d8d1d1;
+  position: absolute;
+  top: 205px;
+  right: 10px;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 1;
+  pointer-events: auto; /* Ensure it catches click events */
+}
+
+.favorite-icon:hover {
+color: #ff6666; /* Hover color */
+}
+
+/* When favorited */
+.favorite-icon.favorited {
+color: #ff6666; /* Favorite color when clicked */
+}
+
+/*delete icon*/
+.delete-icon{
+  font-size: 23px;
+  color: #9a9a9a;
+  position: absolute;
+  top: 205px;
+  right: 50px;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 1;
+  pointer-events: auto;
+}
+
+/*Transactions*/
+.transaction-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  margin-right: 16px; /* Adjust this value to align with the 'Payment Status' column */
+}
+
+.transaction-header h2 {
+  margin-bottom: 0; /* Removes any default margin from the heading */
+}
+
+.clear-transaction {
+  background-color: #007bff;
+  color: #ffffff;
+  padding: 10px 12px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.clear-transaction:hover {
+  background-color: #00a2ff;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .main-content {
+    margin-left: 0;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: auto;
+  }
+
+  .stat-box, .property-card {
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .stat-box h3, .stat-box p {
+    font-size: 1rem;
+  }
+
+  .property-card .card-body {
+    padding: 10px;
+  }
+}
+

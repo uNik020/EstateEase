@@ -1,0 +1,37 @@
+<app-navbar *ngIf="showNavbar"></app-navbar>
+<div class="property-listing-container">
+  <h2>Property Listing</h2>
+  <p>
+    Explore our curated selection of homes designed for family living. From spacious backyards to cozy nooks, find a place where every moment counts.</p>
+
+  <div class="filter-buttons">
+    <button class="btn All" (click)="filterAll()">All</button>
+    <button class="btn for-sell" (click)="filterForSell()">For Sell</button>
+    <button class="btn for-rent" (click)="filterForRent()">For Rent</button>
+  </div>
+
+  <div class="property-cards">
+    <div *ngFor="let property of filteredProperties" class="property-card" 
+    (click)="navigateToDetails(property.propertyId)">
+      <img [src]="'assets/'+ property.propertyImgPath || 'assets/default-property.jpg'" alt="Property Image">
+      <span class="badge for-sell">{{ property.propertyStatus }}</span>
+      <span class="badge type">{{ property.propertyType }}</span>
+      <div class="property-info">
+        <h3>{{ property.price | currency:'INR'}}</h3>
+              <!-- Heart Icon for Favorites -->
+        <i class="favorite-icon fas fa-heart"
+        [class.favorited]="isFavorited(property.propertyId)" 
+        (click)="toggleFavorite(property.propertyId,$event)">
+      </i>
+        <p><i class="fas fa-map-marker-alt"></i> {{ property.location.city }}, {{ property.location.state }}, {{ property.location.country }} - {{ property.location.pin }}</p>
+        <div class="property-meta">
+          <span><i class="fas fa-expand"></i> {{ property.area }} Sqft</span>
+          <span><i class="fas fa-bed"></i> {{ property.bedrooms }} Bed</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<app-footer *ngIf="showNavbar"></app-footer>

@@ -1,0 +1,97 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <h1>Post Your Property</h1>
+    <form (ngSubmit)="onSubmit()" #propertyForm="ngForm">
+        <div class="form-section">
+            <h2>Property Details</h2>
+            <!-- <label for="property-Id">Property ID:</label>
+            <input type="number" id="propertyId" name="propertyId" [(ngModel)]="propertyDetails.propertyId" readonly required>
+            <small *ngIf="propertyForm.controls['propertyId']?.invalid && propertyForm.controls['propertyId']?.touched" class="text-danger">Property ID is required.</small> -->
+
+            <!-- Optionally include ownerId if needed for debugging or visibility -->
+  <input type="hidden" [(ngModel)]="propertyDetails.owner" name="ownerId" />
+
+            <label for="property-type">Property Type:</label>
+            <select id="property-type" name="propertyType" [(ngModel)]="propertyDetails.propertyType" required (change)="onPropertyTypeChange()">
+                <option value="">Select Property Type</option>
+                <option *ngFor="let propertyType of propertyType" [value]="propertyType">{{ propertyType }}</option>
+            </select>
+            <small *ngIf="propertyForm.controls['propertyType']?.invalid && propertyForm.controls['propertyType']?.touched" class="text-danger">Property type is required.</small>
+        </div>
+        
+        <div class="form-section">
+            
+            <label for="city">Select City:</label>
+            <input type="text" id="property-city" name="city" placeholder="Enter city" [(ngModel)]="propertyDetails.location.city" required>
+            <small *ngIf="propertyForm.controls['city']?.invalid && propertyForm.controls['city']?.touched" class="text-danger">City is required.</small>
+            
+            <label for="state">Select State:</label>
+            <input type="text" id="property-state" name="state" placeholder="Enter State" [(ngModel)]="propertyDetails.location.state" required>
+            <small *ngIf="propertyForm.controls['state']?.invalid && propertyForm.controls['state']?.touched" class="text-danger">State is required.</small>
+           
+            <label for="Country">Select Country:</label>
+            <input type="text" id="property-country" name="country" placeholder="Enter Country" [(ngModel)]="propertyDetails.location.country" required>
+            <small *ngIf="propertyForm.controls['country']?.invalid && propertyForm.controls['country']?.touched" class="text-danger">Country is required.</small>
+            
+            <label for="property-pincode">Enter Pin Code:</label>
+            <input type="number" id="property-pincode" name="pinCode" placeholder="Enter pincode" [(ngModel)]="propertyDetails.location.pin" required>
+            <small *ngIf="propertyForm.controls['pinCode']?.invalid && propertyForm.controls['pinCode']?.touched" class="text-danger">Pincode is required.</small>
+        </div>
+
+        <div class="form-section">
+            <label for="listingType">Property Listing Type:</label>
+            <select id="listingType" [(ngModel)]="propertyDetails.propertyStatus" name="listingType">
+                <option *ngFor="let propertyStatus of propertyStatus" [value]="propertyStatus">{{ propertyStatus }}</option>
+            </select>
+
+            <label for="property-price">Price (in INR):</label>
+            <input type="number" id="property-price" name="price" placeholder="Enter the price" [(ngModel)]="propertyDetails.price" required>
+            <small *ngIf="propertyForm.controls['price']?.invalid && propertyForm.controls['price']?.touched" class="text-danger">Price is required.</small>
+
+            <label for="property-size">Size (in sqft):</label>
+            <input type="number" id="property-size" name="area" placeholder="Enter Area in sqft" [(ngModel)]="propertyDetails.area" required>
+            <small *ngIf="propertyForm.controls['area']?.invalid && propertyForm.controls['area']?.touched" class="text-danger">Area is required.</small>
+            
+            <!-- Selector for Bedrooms -->
+            <label for="bedrooms">Number of Bedrooms:</label>
+            <select id="bedrooms" [(ngModel)]="propertyDetails.bedrooms" name="bedrooms" [disabled]="isPlot">
+            <option *ngFor="let number of bedroomOptions" [value]="number">{{ number }}</option>
+            </select>
+
+            <!-- Selector for Bathrooms -->
+            <label for="bathrooms">Number of Bathrooms:</label>
+            <select id="bathrooms" [(ngModel)]="propertyDetails.bathrooms" name="bathrooms" [disabled]="isPlot">
+            <option *ngFor="let number of bathroomOptions" [value]="number">{{ number }}</option>
+            </select>
+
+        </div>
+
+        <div class="form-section">
+            <label for="description">Property Description:</label>
+            <textarea id="description" name="description" placeholder="Enter a detailed description of your property" [(ngModel)]="propertyDetails.description" rows="5"></textarea>
+            <small *ngIf="propertyForm.controls['description']?.invalid && propertyForm.controls['description']?.touched" class="text-danger">Description is required.</small>
+        </div>
+
+        <div class="form-section">
+            <label for="property-images">Select Images:</label>
+            <input type="file" id="property-images" name="property_images[]" accept="image/*" (change)="onFileSelected($event)" multiple>
+            <small *ngIf="propertyForm.controls['imgPath']?.invalid && propertyForm.controls['imgPath']?.touched" class="text-danger">Select valid image path.</small>
+        </div>
+
+        <div class="form-section">
+            <label for="owner-name">Owner's Name:</label>
+            <input type="text" id="owner-name" name="username" [(ngModel)]="username">
+        
+            <label for="contact-number">Contact Number:</label>
+            <input type="tel" id="contact-number" name="contactNumber" [(ngModel)]="contactNumber">
+        
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" [(ngModel)]="email">
+        </div>
+
+        <div class="form-section">
+            <button type="submit" [disabled]="!propertyForm.form.valid">Post Property</button>
+        </div>
+    </form>
+</div>
+<app-footer></app-footer>

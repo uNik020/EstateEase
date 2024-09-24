@@ -1,0 +1,49 @@
+<app-navbar></app-navbar>
+<div class="register-container">
+  <form class="register-form" (ngSubmit)="onSubmit()" #reg_form="ngForm" novalidate>
+    <h2>Create an Account</h2>
+
+    <!-- Username -->
+    <div class="input-group">
+      <input type="text" placeholder="Username" [(ngModel)]="user.username" name="username" required minlength="3" #username="ngModel" />
+      <span *ngIf="username.invalid && username.touched" class="error">Username must be at least 3 characters long</span>
+    </div>
+
+    <!-- Email -->
+    <div class="input-group">
+      <input [(ngModel)]="user.email" type="email" placeholder="Email" name="email" required email #email="ngModel" />
+      <span *ngIf="email.invalid && email.touched" class="error">Enter a valid email address</span>
+    </div>
+
+    <!-- Phone Number -->
+    <div class="input-group">
+      <input [(ngModel)]="user.phone" type="tel" placeholder="Phone Number" name="phone" required pattern="[0-9]{10}" #phone="ngModel" />
+      <span *ngIf="phone.invalid && phone.touched" class="error">Phone number must be exactly 10 digits</span>
+    </div>
+
+     <!-- Password -->
+     <div class="input-group password-group">
+      <input [(ngModel)]="user.password" [type]="passwordVisible ? 'text' : 'password'" placeholder="Password" name="password" required minlength="8" #password="ngModel" />
+      <span class="toggle-password" (click)="togglePasswordVisibility('password')">
+        <i [ngClass]="passwordVisible ? 'fas fa-eye-slash' : 'fas fa-eye'"></i>
+      </span>
+      <span *ngIf="password.invalid && password.touched" class="error">Password must be at least 8 characters long with numbers and symbols</span>
+    </div>
+
+    <!-- Confirm Password -->
+    <div class="input-group password-group">
+      <input [(ngModel)]="cpass" [type]="confirmPasswordVisible ? 'text' : 'password'" placeholder="Confirm Password" name="confirmPassword" required #confirmPassword="ngModel" />
+      <span class="toggle-password" (click)="togglePasswordVisibility('confirmPassword')">
+        <i [ngClass]="confirmPasswordVisible ? 'fas fa-eye-slash' : 'fas fa-eye'"></i>
+      </span>
+      <span *ngIf="confirmPassword.invalid && confirmPassword.touched" class="error">Passwords do not match</span>
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" class="register-button" [disabled]="reg_form.invalid">Register</button>
+
+    <!-- Link to sign in -->
+    <p class="sign-in-link">Already have an account? <a routerLink="/login">Sign in</a></p>
+  </form>
+</div>
+<app-footer></app-footer>
