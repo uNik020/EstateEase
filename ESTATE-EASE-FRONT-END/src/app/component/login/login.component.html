@@ -1,29 +1,3 @@
-<!-- <app-navbar></app-navbar>
-<div class="register-container">
-  <form class="register-form" (ngSubmit)="onSubmit()" #login_form="ngForm">
-    <h2>Sign in</h2>
-
-    <div class="input-group">
-      <input [(ngModel)]="user.email" type="email" placeholder="Email" name="email" required />
-    </div>
-
-    <div class="input-group password-group">
-      <input [(ngModel)]="user.password" type="password" placeholder="Password" name="password" required #password />
-      <span class="toggle-password" (click)="togglePasswordVisibility(password)">
-        <i [ngClass]="passwordVisible ? 'fas fa-eye-slash' : 'fas fa-eye'"></i>
-      </span>
-    </div>
-
-    <a id="forgot-pass-link" routerLink="/forgotpass">Forgot password?</a>
-    <br>
-    <button type="submit" class="Signin-button">Sign in</button>
-    
-    <p class="sign-in-link">Don't have an account? <a routerLink="/register">Sign up</a></p>
-    
-  </form>
-</div>
-<app-footer></app-footer> -->
-
 <app-navbar></app-navbar>
 <div class="register-container">
   <form class="register-form" (ngSubmit)="onSubmit()" #login_form="ngForm" novalidate>

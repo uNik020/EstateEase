@@ -6,11 +6,12 @@
       
     </div>
     <div class="property-info">
-      <h1>{{ property?.propertyType }} {{ property?.propertyStatus }}</h1>
+      <h1 >{{ property?.propertyType }}</h1>
+      <h1 style="font-style: italic; color: darkorange;">{{ property?.propertyStatus }}</h1>
       <h2>{{ property?.price | currency:'INR' }}</h2>
-      <p class="location">
+      <h4 class="location">
         <i class="fas fa-map-marker-alt"></i> {{ property?.location?.city }}, {{ property?.location?.state }}, {{ property?.location?.country }} - {{ property?.location?.pin }}
-      </p>
+      </h4>
       <div class="property-meta">
         <span><i class="fas fa-expand"></i> {{ property?.area }} Sqft</span>
         <span><i class="fas fa-bed"></i> {{ property?.bedrooms }} Bed</span>
@@ -25,14 +26,18 @@
 
 <!-- Buy Button for Other Users -->
 <button class="btn buy-now" 
-*ngIf="property?.owner !== loggedInUser" 
+*ngIf="property?.owner !== loggedInUser && property?.propertyStatus !== 'SOLD'"
 (click)="buyProperty(property?.propertyId,property?.price)">
 Buy Now
 </button>
-<button class="btn wishlist"  (click)="addToWishlist(property)"
-[disabled]="isPropertyInWishlist(property?.propertyId)"
->
-{{ isPropertyInWishlist(property?.propertyId) ? 'In Wishlist' : 'Add to Wishlist' }}</button>
+<button class="btn wishlist"
+  (click)="addToWishlist(property)"
+  [disabled]="isInWishlist || property?.propertyStatus === 'SOLD'">
+  {{ isInWishlist ? 'In Wishlist' : 'Add to Wishlist' }}
+</button>
+<div *ngIf="property?.propertyStatus === 'sold'">
+  <p class="sold-notice">This property is sold</p>
+</div>
 
       </div>
     </div>

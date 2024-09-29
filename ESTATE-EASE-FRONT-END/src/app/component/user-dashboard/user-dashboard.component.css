@@ -31,14 +31,18 @@
   padding: 15px;
   font-size: 18px;
 }
+.nav-link:hover{
+  cursor: pointer;
+}
 
 .nav-link.active {
-  background-color: #007bff;
+  background-color: #807b7b;
 }
 
 /* Main Content */
 .main-content {
   margin-left: 220px;
+  background-color: #ffffff;
   position: relative;
   padding: 20px;
   height: 100vh;      /* Full view height */
@@ -48,7 +52,7 @@
 
 /* Dashboard Stats */
 .stat-box {
-  background-color: #f8f9fa;
+  background-color: #ffffff;
   border-radius: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
@@ -270,3 +274,72 @@ color: #ff6666; /* Favorite color when clicked */
   }
 }
 
+/* User Profile Section Styling */
+.user-profile {
+  background-color: rgb(255, 255, 255);
+  padding: 20px;
+}
+
+.profile-box {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.user-form .form-group label {
+  font-weight: bold;
+}
+
+.user-form .form-control {
+  border-radius: 5px;
+  padding: 10px;
+  border: 1px solid #007bff;
+  transition: border-color 0.3s;
+}
+
+.user-form .form-control:focus {
+  border-color: #0056b3;
+  box-shadow: 0 0 5px rgba(0, 91, 187, 0.3);
+}
+
+.save-btn {
+  background-color: #007bff;
+  color: white;
+  padding: 15px;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  display: block;
+  width: 120px;
+  
+}
+
+.save-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Pencil Icon Styling */
+.edit-icon {
+  color: #686969;
+  font-size: 24px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.edit-icon:hover {
+  color: #0056b3;
+}
+
+@media (max-width: 768px) {
+  .profile-box {
+    padding: 15px;
+  }
+
+  .save-btn {
+    font-size: 16px;
+    padding: 10px;
+  }
+}

@@ -138,6 +138,14 @@ export class PostPropertyComponent implements OnInit {
             icon: 'error',
             confirmButtonText: 'Ok'
           });
+          if (error.status === 500 || error.status === 409) {
+            Swal.fire({
+              title: 'Error!',
+              text: 'Property with these details is already posted.',
+              icon: 'error',
+              confirmButtonText: 'Ok'
+            });
+          }
         }
       );
     } else {

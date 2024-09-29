@@ -6,14 +6,14 @@
 
     <div class="logo">Estate-Ease</div>
       <!-- Display user name if logged in -->
-      <span *ngIf="isLoggedIn" class="user-name">Welcome,{{username}}</span>
+      <span *ngIf="isLoggedIn" class="user-name">Welcome {{username}}</span>
     <nav class="nav">
-      <a routerLink="/" class="nav-link" routerLinkActive="active">Home</a>
+      <a routerLink="/home-page" class="nav-link" routerLinkActive="active">Home</a>
       <a routerLink="/about-page" class="nav-link" routerLinkActive="active">About</a>
       <div class="dropdown">
-        <a href="#" class="nav-link">Property</a>
+        <a routerLink="/property-listing" class="nav-link">Property</a>
         <div class="dropdown-content">
-          <a routerLink="/search-properties">Search Properties</a>
+          <a routerLink="/search">Search Properties</a>
           <a routerLink="/post-property">Sell/Rent</a>
           <a routerLink="/property-listing">Buy</a>
         </div>

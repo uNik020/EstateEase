@@ -10,10 +10,10 @@
   
   .register-form {
     background: rgba(255, 255, 255, 0.8);
-    border-radius: 10px;
+    border-radius: 20px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     padding: 20px;
-    width: 100%;
+    width: 50%;
     max-width: 800px;
     text-align: center;
     font-family: 'Optima', 'Segoe', 'Candara', sans-serif;
@@ -62,7 +62,13 @@
     cursor: pointer;
     transition: background-color 0.3s;
   }
-  
+
+  /* When the button is disabled */
+.disabled-button {
+  cursor: not-allowed;
+  opacity: 0.6; /* Optional: Makes the button look disabled */
+}
+
   .register-button:hover {
     background-color: #0056b3;
   }

@@ -32,19 +32,31 @@ if (this.router.url === '/home-page') {
   }
 
   getLoggedInUser(): void {
-    const userString = sessionStorage.getItem('loggedInUser');
-    if (userString) {
-      const user = JSON.parse(userString); // Parse the user object
-      this.loggedInUser = user?.userId; // Access the userId
-      if (this.loggedInUser) {
-        this.loadProperties();
+    // Check if window and sessionStorage are available (browser environment)
+    if (typeof window !== 'undefined' && typeof sessionStorage !== 'undefined' && typeof localStorage !== 'undefined') {
+      const userString = sessionStorage.getItem('loggedInUser');
+      
+      if (userString) {
+        try {
+          const user = JSON.parse(userString); // Parse the user object
+          this.loggedInUser = user?.userId; // Access the userId
+  
+          if (this.loggedInUser) {
+            this.loadProperties();
+          } else {
+            console.error('User ID not found in the user object');
+          }
+        } catch (error) {
+          console.error('Error parsing user object from sessionStorage', error);
+        }
       } else {
-        console.error('User ID not found in the user object');
+        console.error('No logged-in user object found in session storage');
       }
     } else {
-      console.error('No logged-in user object found in session storage');
+      console.error('sessionStorage is not available (non-browser environment)');
     }
   }
+  
 
   // Function to load properties from the backend except those posted by the logged-in user
   // loadProperties(): void {
@@ -78,10 +90,8 @@ if (this.router.url === '/home-page') {
         }
       );
     } else {
-      console.log('No user logged in. Fetching all properties.'); // Additional log for clarity
       this.propertyService.getAllProperties().subscribe(
         (data: Property[]) => {
-          console.log('All properties fetched:', data); // Debug log
           this.properties = data;
           this.filterAll();  // Initially display all properties
         },

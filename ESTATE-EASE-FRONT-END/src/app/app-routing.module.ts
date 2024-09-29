@@ -12,6 +12,7 @@ import { ContactPageComponent } from './component/contact-page/contact-page.comp
 import { AdminLoginComponent } from './component/admin-login/admin-login.component';
 import { UserDashboardComponent } from './component/user-dashboard/user-dashboard.component';
 import { AboutPageComponent } from './component/about-page/about-page.component';
+import { SearchComponent } from './component/search/search.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home-page', pathMatch: 'full' }, // Default route/ will change after adding home page
@@ -27,6 +28,7 @@ const routes: Routes = [
   { path: 'admin-login', component: AdminLoginComponent },
   { path: 'user-dashboard', component: UserDashboardComponent },
   { path: 'about-page', component: AboutPageComponent},
+  { path: 'search', component: SearchComponent},
   
   { path: '**', redirectTo: '/home-page' } // Wildcard route for handling 404
 ];

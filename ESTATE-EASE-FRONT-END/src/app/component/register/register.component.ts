@@ -31,15 +31,15 @@ export class RegisterComponent {
           console.log('Registration successful', Response);
           Swal.fire({
             title: 'Success!',
-            text: 'Your registration was successful.',
+            text: 'Your registration is successful.',
             icon: 'success',
-            confirmButtonText: 'Cool'
+            confirmButtonText: 'Nice'
           });
           this.router.navigate(['login']);
         },
         error => {
           console.error('Registration failed', error);
-          if (error.status === 500) {
+          if (error.status === 500 || error.status === 409) {
             Swal.fire({
               title: 'Error!',
               text: 'Email-Id already registered.',

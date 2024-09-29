@@ -171,7 +171,31 @@ body {
     cursor: pointer;
     border-radius: 5px;
 }
-
+.slider{
+    margin-inline: 10%;
+    padding: 0;
+}
 .search-bar .search-btn:hover {
     background-color: #444;
 }
+
+.carousel-item img {
+    height: 200px; /* Adjust the height of the slider images */
+    width: auto;
+    object-fit: cover; /* Ensures the image covers the entire slide */
+    transition: transform 0.5s ease-in-out;
+  }
+
+  /* Ensure the carousel always maintains the same height */
+.carousel {
+    height: 200px; /* Fix the height to 200px */
+    overflow: hidden; /* Prevent any overflow during transition */
+      margin: 0 auto;
+      background-color: white;
+  }
+  
+  .carousel-inner {
+    height: 100%; /* Ensure the inner container matches the set height */
+  }
+
+  

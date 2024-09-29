@@ -11,20 +11,31 @@
         </div>
         <ul class="nav flex-column">
           <li class="nav-item">
-            <a class="nav-link text-white active" (click)="showSection('Overview')">Overview</a>
+            <a class="nav-link text-white" 
+               [ngClass]="{'active': isActive('Overview')}" 
+               (click)="showSection('Overview')">Overview</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white" (click)="showSection('MyListings')">My Listings</a>
+            <a class="nav-link text-white" 
+               [ngClass]="{'active': isActive('MyListings')}" 
+               (click)="showSection('MyListings')">My Listings</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white" (click)="showSection('Wishlist')">Wishlist</a>
+            <a class="nav-link text-white" 
+               [ngClass]="{'active': isActive('Wishlist')}" 
+               (click)="showSection('Wishlist')">Wishlist</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white" (click)="showSection('Favorites')">Favorites</a>
+            <a class="nav-link text-white" 
+               [ngClass]="{'active': isActive('Favorites')}" 
+               (click)="showSection('Favorites')">Favorites</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white" (click)="showSection('Transactions')">Transactions</a>
+            <a class="nav-link text-white" 
+               [ngClass]="{'active': isActive('Transactions')}" 
+               (click)="showSection('Transactions')">Transactions</a>
           </li>
+          
           <li class="nav-item">
             <a class="nav-link text-white" routerLink="/forgotpass">Change Password</a>
           </li>
@@ -39,7 +50,7 @@
         </header>
   
         <!-- Dashboard Stats -->
-        <section id="Overview" class="dashboard-stats mt-4" *ngIf="activeSection === 'Overview'" style="background-color: lightblue;">
+        <section id="Overview" class="dashboard-stats mt-4" *ngIf="activeSection === 'Overview'" >
           <div class="row">
             <div class="col-md-4">
               <div class="card stat-box">
@@ -66,6 +77,40 @@
               </div>
             </div>
           </div>
+          
+          <!-- User Profile Section -->
+<section id="UserProfile" class="user-profile mt-4" *ngIf="activeSection === 'Overview'">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card profile-box">
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h3>User Profile</h3>
+            <i class="fas fa-pencil-alt edit-icon" title="Update user details" (click)="editProfile()"></i>
+          </div>
+
+          <form class="user-form">
+            <div class="form-group mb-3">
+              <label for="username">Username</label>
+              <input type="text" class="form-control" id="username" [(ngModel)]="username" name="username" [disabled]="!isEditable">
+            </div>
+            <div class="form-group mb-3">
+              <label for="email">Email ID</label>
+              <input type="email" class="form-control" id="email" [(ngModel)]="email" name="email" [disabled]="!isEditable">
+            </div>
+            <div class="form-group mb-3">
+              <label for="contact">Contact Number</label>
+              <input type="text" class="form-control" id="contact" [(ngModel)]="phone" name="phone" [disabled]="!isEditable">
+            </div>
+            <button type="button" class="btn btn-primary save-btn d-flex justify-content-center" (click)="saveUserDetails()" [disabled]="!isEditable">Save</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
         </section>
 
         <!---MyListing-->
@@ -166,7 +211,7 @@
     <table class="transaction-table">
       <thead>
         <tr>
-          <th>Transaction ID</th>
+          <!-- <th>Transaction ID</th> -->
           <th>Owner ID</th>
           <th>Buyer ID</th>
           <th>Property ID</th>
@@ -178,7 +223,7 @@
       </thead>
       <tbody *ngIf="transactions.length > 0; else noTransactions">
         <tr *ngFor="let transaction of transactions">
-          <td>{{ transaction.transactionId }}</td>
+          <!-- <td>{{ transaction.transactionId }}</td> -->
           <td>{{ transaction.owner.userId }}</td>
           <td>{{ transaction.buyer.userId }}</td>
           <td>{{ transaction.propertyId }}</td>

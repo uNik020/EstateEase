@@ -9,6 +9,8 @@ import Swal from 'sweetalert2';
 import { WishlistService } from '../../service/wishlist.service';
 import { TransactionsService } from '../../service/transactions.service';
 import { Transaction } from '../../entities/transaction';
+import { UserService } from '../../service/user.service';
+import { User } from '../../entities/user';
 
 @Component({
   selector: 'app-user-dashboard',
@@ -17,7 +19,9 @@ import { Transaction } from '../../entities/transaction';
 })
 export class UserDashboardComponent implements OnInit, OnDestroy {
   isLoggedIn: boolean = false;  //status of login
-  username: string | null = '';
+  username: string | any = '';
+  email: string = '';
+  phone: string = '';
   myListings: Property[] = [];  //loggedin user's listings
   favoriteProperties: Property[] = [];  // favorite properties of the logged-in user
   wishlist: any[] = [];
@@ -34,9 +38,13 @@ export class UserDashboardComponent implements OnInit, OnDestroy {
     private propertyService: PropertyService,
     private wishlistService: WishlistService,
     private transactionService:TransactionsService,
+    private userService:UserService,
     private router: Router
   ) {}
 
+  isActive(section: string): boolean {
+    return this.activeSection === section;
+  }
   showSection(section: string): void {
     this.activeSection = section; // Change the active section
     if (section === 'Favorites') {
@@ -100,6 +108,10 @@ export class UserDashboardComponent implements OnInit, OnDestroy {
     if (userString) {
       const user = JSON.parse(userString); // Parse the user object
       this.loggedInUser = user.userId; // Assuming 'id' is the key for user ID
+      this.username=user.username;
+      this.email=user.email;
+      this.phone=user.phone;
+      
       console.log('Logged In User ID:', this.loggedInUser);
       this.loadMyListings(); // Load properties for this user
     } else {
@@ -324,6 +336,70 @@ fetchUserTransactions(): void {
 
 clearTransactions(): void {
   this.transactions = []; // Clears the transaction display
+}
+
+//user profile
+isEditable: boolean = false; // This tracks whether the fields are editable or not
+editProfile(){
+  this.isEditable = !this.isEditable; // Toggle the edit mode
+}
+
+saveUserDetails(): void {
+  if (this.isEditable) {
+    // Code for saving the updated user details
+    const data = sessionStorage.getItem('loggedInUser');
+    let user: User | null = null; // Declare 'user' properly
+    if (data) {
+      const user = JSON.parse(data);
+      this.loggedInUser = user.userId; // Use the parsed user data
+    } else {
+      // Handle case where user data is not in sessionStorage
+      console.error('No loggedInUser found in sessionStorage');
+      return;
+    }    
+    const updatedUser :Partial<User> = {
+      userId:this.loggedInUser as number, 
+      username: this.username,
+      email: this.email,
+      phone: this.phone,
+    };
+
+   // Call the service to update user details
+   this.userService.updateUser(this.loggedInUser as number, updatedUser as User).subscribe(
+    (response) => {
+      // If the update is successful, update sessionStorage and disable the fields
+     // Update sessionStorage and disable the fields if successful
+    if (user) {
+          sessionStorage.setItem('loggedInUser', JSON.stringify({...updatedUser }));
+        }
+        this.isEditable = false;
+
+
+        Swal.fire({
+          title: 'Success!',
+          text: 'User details updated successfully.',
+          icon: 'success',
+          confirmButtonText: 'OK',
+          customClass: {
+            confirmButton: 'btn btn-primary'
+          }
+        });
+    },
+    (error) => {
+      // Handle any errors that occur during the update
+      console.error('Error updating user details:', error);
+      Swal.fire({
+        title: 'Error!',
+        text: 'Failed to update user details.',
+        icon: 'error',
+        confirmButtonText: 'Try Again',
+        customClass: {
+          confirmButton: 'btn btn-danger'
+        }
+      });
+    }
+  );
+  }
 }
 
   ngOnDestroy(): void {

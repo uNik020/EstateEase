@@ -1,0 +1,114 @@
+<app-navbar></app-navbar>
+<div class="container-fluid mt-5 px-5">
+    <div class="row">
+      
+      <!-- Sidebar with Filters -->
+      <div class="col-lg-3 col-md-4 col-sm-12 sidebar">
+        <h4>Filter Properties</h4>
+        
+        <!-- Property Type Filter -->
+        <div class="filter-section">
+          <h6>Property Type</h6>
+          <div>
+            <input type="checkbox" id="apartment" [(ngModel)]="selectedPropertyTypes.apartment">
+            <label for="apartment"> Apartment</label><br>
+            <input type="checkbox" id="house" [(ngModel)]="selectedPropertyTypes.house">
+            <label for="house"> House</label><br>
+            <input type="checkbox" id="villa" [(ngModel)]="selectedPropertyTypes.villa">
+            <label for="villa"> Villa</label><br>
+            <input type="checkbox" id="plot" [(ngModel)]="selectedPropertyTypes.plot">
+            <label for="plot"> Plot</label><br>
+          </div>
+        </div>
+  
+        <!-- Property Status Filter -->
+        <div class="filter-section">
+          <h6>Status</h6>
+          <div>
+            <button class="btn btn-outline-primary filter-btn" (click)="filterForSell()">For Sell</button>
+            <button class="btn btn-outline-primary filter-btn" (click)="filterForRent()">For Rent</button>
+          </div>
+        </div>
+  
+        <!-- Price Range Filter -->
+        <div class="filter-section">
+          <h6>Price Below:</h6>
+          <input placeholder="Max price(in Rs.)" class="form-control" type="number" min="0" max="10000000" [(ngModel)]="price">
+        </div>
+        
+         <!-- Size Range Filter -->
+         <div class="filter-section">
+          <h6>Size Below(in Sqft.)</h6>
+          <input placeholder="Max Size(in Sqft.)" class="form-control" type="number" min="200" max="500000"  [(ngModel)]="size">
+        </div>
+
+        <!-- Bedrooms Filter -->
+        <div class="filter-section">
+          <h6>Bedrooms</h6>
+          <div *ngFor="let bed of bedroomOptions">
+            <input type="checkbox" [id]="bed" [(ngModel)]="selectedBedrooms[bed]" />
+            <label [for]="bed">{{ bed }} bedroom</label>
+          </div>
+        </div>
+
+        <!-- Bathrooms Filter -->
+        <div class="filter-section">
+          <h6>Bathrooms</h6>
+          <div *ngFor="let bath of bathroomOptions">
+            <input type="checkbox" [id]="bath" [(ngModel)]="selectedBathrooms[bath]" />
+            <label [for]="bath">{{ bath }} bathroom</label>
+          </div>
+        </div>
+  
+        <!-- Apply Filters Button -->
+        <div class="d-grid">
+          <button class="btn btn-primary mt-4 apply-filters-btn" (click)="applyFilters()">Apply Filters</button>
+          <button class="btn btn-link mt-4 clear-filters-btn" (click)="clearFilters()">Clear Filters</button>
+        </div>
+      </div>
+  
+      <!-- Property Search & Listings -->
+      <div class="col-lg-9 col-md-8 col-sm-12">
+        <!-- Search Bar -->
+        <div class="search-bar mb-4">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search properties by location..." [(ngModel)]="searchQuery">
+            <button class="btn btn-primary" type="button" (click)="searchProperties()">
+              <i class="bi bi-search"></i> Search
+            </button>
+          </div>
+        </div>
+        <hr>
+        <h5>Search Properties</h5>
+
+        <!-- Property Cards -->
+        <div class="property-cards">
+          <div *ngIf="noPropertiesFound" class="no-properties-message">
+            No property with the given description found.
+          </div>
+          <div *ngFor="let property of filteredProperties" class="property-card" 
+          (click)="navigateToDetails(property.propertyId)">
+            <img [src]="'assets/'+ property.propertyImgPath || 'assets/default-property.jpg'" alt="Property Image">
+            <span class="badge for-sell">{{ property.propertyStatus }}</span>
+            <span class="badge type">{{ property.propertyType }}</span>
+            <div class="property-info">
+              <h3>{{ property.price | currency:'INR'}}</h3>
+                    <!-- Heart Icon for Favorites -->
+              <i class="favorite-icon fas fa-heart"
+              [class.favorited]="isFavorited(property.propertyId)" 
+              (click)="toggleFavorite(property.propertyId,$event)">
+            </i>
+              <p><i class="fas fa-map-marker-alt"></i> {{ property.location.city }}, {{ property.location.state }}, {{ property.location.country }} - {{ property.location.pin }}</p>
+              <div class="property-meta">
+                <span><i class="fas fa-expand"></i> {{ property.area }} Sqft</span>
+                <span><i class="fas fa-bed"></i> {{ property.bedrooms }} Bed</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+    </div>
+</div>
+
+<app-footer></app-footer>

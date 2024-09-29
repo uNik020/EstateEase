@@ -1,7 +1,7 @@
 /* Custom CSS for styling */
 .container-fluid {
     padding: 4rem 3rem; /* Adjust top padding for header */
-    background: linear-gradient(to bottom right, #19A7CE, #146C94); /* Background gradient */
+    background: white;
     min-height: 90%;
     margin: 0 auto; /* Center the container */
     width: 80%; /* Set width to account for margins */
@@ -16,7 +16,7 @@
     flex: 1;
     padding: 40px;
     border-radius: 10px;
-    background-color: rgba(255, 255, 255, 0.9);
+    background:  white;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease-in-out;
     margin-right: 20px; /* Add margin between info and image */

@@ -19,6 +19,8 @@ import { AdminLoginComponent } from './component/admin-login/admin-login.compone
 import { AdminDashboardComponent } from './component/admin-dashboard/admin-dashboard.component';
 import { UserDashboardComponent } from './component/user-dashboard/user-dashboard.component';
 import { AboutPageComponent } from './component/about-page/about-page.component';
+import { SearchComponent } from './component/search/search.component';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
 
 @NgModule({
   declarations: [
@@ -36,13 +38,15 @@ import { AboutPageComponent } from './component/about-page/about-page.component'
     AdminLoginComponent,
     AdminDashboardComponent,
     UserDashboardComponent,
-    AboutPageComponent
+    AboutPageComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CarouselModule.forRoot()
 
   ],
   providers: [

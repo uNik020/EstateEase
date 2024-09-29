@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 })
 export class UserService {
 
-  constructor(private httpClient : HttpClient) { }
+  constructor(private httpClient : HttpClient) {}
 
    //find user by email
    public findUserByEmail(email : String){
@@ -23,8 +23,8 @@ export class UserService {
   }
 
   //update user
-  public updateUser(userId:number,user : User){
-    return this.httpClient.put(`${baseurl}/api/user/${userId}`,user);
+  public updateUser(userId:number,user : User): Observable<User> {
+    return this.httpClient.put<User>(`${baseurl}/api/user/${userId}`,user);
   }
 
   

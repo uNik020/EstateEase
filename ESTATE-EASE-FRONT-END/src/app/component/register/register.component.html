@@ -40,7 +40,7 @@
     </div>
 
     <!-- Submit Button -->
-    <button type="submit" class="register-button" [disabled]="reg_form.invalid">Register</button>
+    <button type="submit" class="register-button" [disabled]="reg_form.invalid" [ngClass]="{'disabled-button': reg_form.invalid}">Register</button>
 
     <!-- Link to sign in -->
     <p class="sign-in-link">Already have an account? <a routerLink="/login">Sign in</a></p>
