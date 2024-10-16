@@ -47,11 +47,15 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  animation: slideBottom 5s ease forwards infinite;
+  animation-delay: 5s;
 }
 
 .buy-now {
   background-color: #007bff;
   color: white;
+  animation: slideBottom 5s ease forwards infinite;
+  animation-delay: 5s;
 }
 .update-now {
   background-color: #82e4eb;
@@ -74,6 +78,11 @@
   
   .property-info {
     padding: 15px;
+  }
+
+  .property-details-container{
+    margin: 0;
+    width: 100%;
   }
 }
 
@@ -98,4 +107,53 @@
 /* When favorited */
 .favorite-icon.favorited {
   color: #ff6666; /* Favorite color when clicked */
+}
+
+
+@keyframes slideTop {
+  0%{
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  100%{
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes slideRight {
+  0%{
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  100%{
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes slideLeft {
+  0%{
+    transform: translateX(100px);
+    opacity: 0;
+  }
+  100%{
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}
+
+.p{
+  animation: slideRight 5s ease forwards infinite;
+  animation-delay: 5s;
+}
+
+.h3, .h1, .h2, .h4{
+  animation: slideLeft 5s ease forwards infinite;
+    animation-delay: 5s;
+}
+
+.li{
+  animation: slideTop 5s ease forwards infinite;
+  animation-delay: 5s;
 }

@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrl: './footer.component.css'
 })
 export class FooterComponent {
-
+  mailId:string="9to5withnikhil@gmail.com";
 }

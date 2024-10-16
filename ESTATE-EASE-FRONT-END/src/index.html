@@ -4,10 +4,11 @@
   <meta charset="utf-8">
   <title>EstateEase</title>
   <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
   <!-- src/index.html -->
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
@@ -15,6 +16,9 @@
 
 </head>
 <body>
+  <div class="cursor outer"></div>
+  <div class="cursor inner"></div>
+  
   <script>
     (function (w, d, s, o, f, js, fjs) {
       w["botsonic_widget"] = o;
@@ -35,10 +39,13 @@
     });
   </script>
 
+  <app-navbar></app-navbar>
   <app-login></app-login>
+  <app-home-page></app-home-page>
   <app-forgotpass></app-forgotpass>
-  <app-root></app-root>
   <app-register></app-register>
+  <app-footer></app-footer>
+  <app-root></app-root>
 
 </body>
 </html>

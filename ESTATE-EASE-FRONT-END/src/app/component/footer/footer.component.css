@@ -5,8 +5,7 @@
     padding: 20px 0;
     position: relative;
     bottom: 0;
-    margin-right: 10%;
-    margin-left: 10%;
+    margin-inline: 10%;
   }
   
   /* Footer Content */
@@ -83,4 +82,67 @@
     font-size: 14px;
     margin-top: 20px;
   }
+
+  @media (max-width: 768px) {
+    .footer{
+      width: 100%;
+      margin:0%;
+    }
+  }  
+
   
+@keyframes appear {
+  from {
+    opacity: 0;
+    scale:0.5;
+    /*clip-path: inset(100% 100% 0 0);*/
+  }
+  to {
+    opacity: 1;
+    scale:1;
+    /*clip-path: inset(0 0 0 0);*/
+  }
+}
+
+@keyframes slideTop {
+  0%{
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  100%{
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes slideRight {
+  0%{
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  100%{
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes slideLeft {
+  0%{
+    transform: translateX(100px);
+    opacity: 0;
+  }
+  100%{
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}
+
+.footer-section.contact, .footer-section.links{
+  animation: slideLeft 5s ease forwards infinite;
+    animation-delay: 5s;
+}
+
+.footer-section.about{
+  animation: slideTop 5s ease forwards infinite;
+  animation-delay: 5s;
+}

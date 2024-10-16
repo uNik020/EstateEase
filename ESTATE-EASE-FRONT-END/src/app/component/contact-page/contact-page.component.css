@@ -1,15 +1,17 @@
 .container-fluid{
     min-height: 86%;
+    width: 80%;
+    background-color: white;
   }
   .back {
       color: #007bff;
     }
     .btn{
-      cursor: pointer;
       position:centre;
     }
     
     .card {
+      display: flex;
       font-weight: bold;
       padding: 20px;
       color: dark grey;
@@ -27,7 +29,6 @@
     } */
   
   .btn{
-    cursor: pointer;
     position:centre;
   }
   
@@ -58,3 +59,14 @@
 .send-btn:hover {
     background-color: #00a2ff;
 }
+
+/* MOBILE STYLES */
+@media (max-width: 768px) {
+  *{
+    margin: 0%;
+  }
+  .container-fluid{
+   margin-inline:0%;
+   width: 100%;
+  }
+ }

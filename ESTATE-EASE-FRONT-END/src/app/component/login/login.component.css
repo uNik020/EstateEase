@@ -98,3 +98,14 @@
 .sign-in-link a:hover {
   text-decoration: underline;
 }
+
+/* MOBILE STYLES */
+@media (max-width: 768px) {
+  *{
+    margin: 0%;
+  }
+  .register-container{
+   margin-inline:0%;
+   width: 100%;
+  }
+ }

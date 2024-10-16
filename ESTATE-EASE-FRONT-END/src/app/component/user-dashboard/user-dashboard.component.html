@@ -12,8 +12,8 @@
         <ul class="nav flex-column">
           <li class="nav-item">
             <a class="nav-link text-white" 
-               [ngClass]="{'active': isActive('Overview')}" 
-               (click)="showSection('Overview')">Overview</a>
+               [ngClass]="{'active': isActive('Profile')}" 
+               (click)="showSection('Profile')">Profile</a>
           </li>
           <li class="nav-item">
             <a class="nav-link text-white" 
@@ -50,8 +50,8 @@
         </header>
   
         <!-- Dashboard Stats -->
-        <section id="Overview" class="dashboard-stats mt-4" *ngIf="activeSection === 'Overview'" >
-          <div class="row">
+        <section id="Profile" class="dashboard-stats mt-4" *ngIf="activeSection === 'Profile'" >
+          <!-- <div class="row">
             <div class="col-md-4">
               <div class="card stat-box">
                 <div class="card-body text-center">
@@ -76,10 +76,10 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
           
           <!-- User Profile Section -->
-<section id="UserProfile" class="user-profile mt-4" *ngIf="activeSection === 'Overview'">
+<section id="UserProfile" class="user-profile mt-4" *ngIf="activeSection === 'Profile'">
   <div class="row">
     <div class="col-md-12">
       <div class="card profile-box">

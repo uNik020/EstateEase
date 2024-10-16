@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,6 +22,7 @@ import { UserDashboardComponent } from './component/user-dashboard/user-dashboar
 import { AboutPageComponent } from './component/about-page/about-page.component';
 import { SearchComponent } from './component/search/search.component';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -46,8 +48,9 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    CarouselModule.forRoot()
-
+    CarouselModule.forRoot(),
+    BrowserAnimationsModule,
+    NgxSpinnerModule
   ],
   providers: [
     provideHttpClient(withFetch())

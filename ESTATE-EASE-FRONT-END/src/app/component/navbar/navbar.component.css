@@ -12,6 +12,8 @@
     box-shadow: 5px 5px 6px rgba(0, 0, 0, 0.3);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     z-index: 1000;
+    animation:animate__fadeInLeft ease-in;
+    animation-duration: 3s;
 }
 
 .header:hover {
@@ -19,7 +21,7 @@
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2); /* Deeper shadow on hover */
 }
 
-.logo {
+.project-name{
     font-size: 24px;
     font-weight: bold;
     color: #007bff;
@@ -38,7 +40,7 @@
     transition: color 0.3s ease;
 }
 
-.nav-link.active, .nav-link:hover {
+.nav-link.active {
     color: #007bff;
     transform: scale(1.05);
 }
@@ -76,7 +78,6 @@
     color: #ffffff;
     padding: 10px 12px;
     border: none;
-    cursor: pointer;
     border-radius: 5px;
 }
 
@@ -93,3 +94,56 @@
   .profile-section:hover .dropdown-content {
     display: block;
   }
+
+
+.mobile-nav-toggle{
+    display: none;
+}
+
+/* MOBILE STYLES */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: row;
+        padding: 0;
+        width: 100%;
+        margin: 0;
+    }
+
+    .name {
+        font-size: 20px;
+        align-items: center;
+        position: fixed;
+    }
+
+    .nav {
+        display: none; /* Hide the navigation bar initially */
+        flex-direction: row;
+        margin-top: 35px;
+    }
+
+    .nav-link {
+        padding: 5px;
+        width: 100%;
+        margin-top: 35px;
+        text-align: center;
+        align-items:baseline;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .mobile-nav-toggle {
+        display: block;
+        background: none;
+        font-size: 20px;
+        color: #333;
+        position: inherit;
+    }
+
+    .nav.active {
+        display: flex; /* Show the navigation bar when the toggle is clicked */
+    }
+
+    .dropdown .dropdown-content{
+        margin-right: 0;
+    }
+}
+

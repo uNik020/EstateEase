@@ -15,6 +15,11 @@
     username: string | null = '';
     private subscriptions: Subscription = new Subscription();
     propertyDropdownOpen = false;
+    navOpen = false;
+
+    toggleNavbar() {
+      this.navOpen = !this.navOpen;
+    }
   
     constructor(private authService: AuthService, private router: Router) {}
   

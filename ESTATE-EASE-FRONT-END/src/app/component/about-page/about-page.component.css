@@ -26,9 +26,64 @@
     font-weight: bold;
     font-size: 24px;
     margin-bottom: 20px;
+    animation: slideLeft 5s ease forwards infinite;
+    animation-delay: 15s;
 }
 
 .info p {
     font-size: 18px;
     line-height: 1.6;
+    animation: slideRight 5s ease forwards infinite;
+    animation-delay: 5s;
 }
+.list{
+    animation: slideRight 5s ease forwards infinite;
+    animation-delay: 5s;
+}
+/* MOBILE STYLES */
+@media (max-width: 768px) {
+    
+    .container-fluid {
+     margin-inline:0%;
+     width: 100%;
+    }
+
+    .info-container .info{
+        margin: 0;
+        width: 100%;
+    }
+}
+
+
+@keyframes slideTop {
+    0%{
+      transform: translateY(100px);
+      opacity: 0;
+    }
+    100%{
+      transform: translateY(0px);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideRight {
+    0%{
+      transform: translateX(-100px);
+      opacity: 0;
+    }
+    100%{
+      transform: translateX(0px);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideLeft {
+    0%{
+      transform: translateX(100px);
+      opacity: 0;
+    }
+    100%{
+      transform: translateX(0px);
+      opacity: 1;
+    }
+  }

@@ -21,10 +21,9 @@ body {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-
 .header:hover {
-    transform: scale(1.02); /* Slight zoom effect */
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2); /* Deeper shadow on hover */
+    transform: scale(1.02);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
 }
 
 .logo {
@@ -48,33 +47,6 @@ body {
 
 .nav-link.active, .nav-link:hover {
     color: #007bff;
-}
-
-.dropdown {
-    position: relative;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #fff;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    z-index: 1;
-}
-
-.dropdown-content a {
-    display: block;
-    padding: 10px;
-    text-decoration: none;
-    color: #333;
-}
-
-.dropdown-content a:hover {
-    background-color: #f0f0f0;
-}
-
-.dropdown:hover .dropdown-content {
-    display: block;
 }
 
 .add-property-btn {
@@ -108,6 +80,8 @@ body {
     font-size: 48px;
     color: #333;
     line-height: 1.2;
+    animation:slideLeft  5s ease forwards infinite;
+    animation-delay: 10s;
 }
 
 .hero-content .highlight {
@@ -118,6 +92,8 @@ body {
     margin-top: 20px;
     font-size: 16px;
     color: #666;
+    animation: slideRight 5s ease forwards infinite;
+    animation-delay: 10s;
 }
 
 .get-started-btn {
@@ -129,6 +105,8 @@ body {
     cursor: pointer;
     border-radius: 5px;
     font-size: 16px;
+    animation: slideTop 5s ease forwards infinite;
+    animation-delay: 10s;
 }
 
 .get-started-btn:hover {
@@ -136,66 +114,136 @@ body {
 }
 
 .hero-image img {
-    margin-top: 0%;
     max-width: 100%;
     max-height: fit-content;
+    animation: slideLeft  5s ease forwards;
+    animation-delay: 10s;
 }
 
-.search-section {
-    border-radius: 5px;
-    background-color: #007bff;
-    padding: 20px;
-    margin-left: 10%;
-    margin-right: 10%;
-}
 
-.search-bar {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.search-bar input[type="text"], .search-bar select {
-    padding: 8px;
-    margin-right: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    width: 20%;
-}
-
-.search-bar .search-btn {
-    padding: 15px 30px;
-    background-color: #333;
-    color: #ffffff;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-}
-.slider{
+.slider {
     margin-inline: 10%;
     padding: 0;
 }
-.search-bar .search-btn:hover {
-    background-color: #444;
-}
 
 .carousel-item img {
-    height: 200px; /* Adjust the height of the slider images */
+    height: 200px;
     width: auto;
-    object-fit: cover; /* Ensures the image covers the entire slide */
+    object-fit: cover;
     transition: transform 0.5s ease-in-out;
-  }
+}
 
-  /* Ensure the carousel always maintains the same height */
 .carousel {
-    height: 200px; /* Fix the height to 200px */
-    overflow: hidden; /* Prevent any overflow during transition */
-      margin: 0 auto;
-      background-color: white;
-  }
-  
-  .carousel-inner {
-    height: 100%; /* Ensure the inner container matches the set height */
-  }
+    height: 200px;
+    overflow: hidden;
+    margin: 0 auto;
+    background-color: white;
+}
 
+@keyframes appear {
+    from {
+      opacity: 0;
+      scale:0.5;
+      /*clip-path: inset(100% 100% 0 0);*/
+    }
+    to {
+      opacity: 1;
+      scale:1;
+      /*clip-path: inset(0 0 0 0);*/
+    }
+  }
   
+  .slider {
+    animation: appear ease-in;
+    animation-timeline: view();
+    animation-range: entry 0% cover 30%;
+  }
+  
+/* Media Queries for Mobile Devices */
+@media (max-width: 768px) {
+    .header, .hero-section, .search-section, .slider {
+        margin-inline: 0%;
+    }
+
+    .hero-section {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-content {
+        max-width: 80%;
+    }
+
+    .hero-content h1 {
+        font-size: 32px;
+        animation: slideLeft 5s ease forwards infinite;
+        animation-delay: 5s;
+    }
+
+    .hero-content p {
+        font-size: 14px;
+    }
+
+    .get-started-btn {
+        width: 70%;
+        font-size: 14px;
+    }
+
+    .hero-image img {
+        width: 100%;
+        margin-top: 5px;
+    }
+
+    .search-bar input[type="text"], .search-bar select {
+        width: 80%;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .search-bar .search-btn {
+        width: 100%;
+    }
+    .carousel{
+        height: 80px;
+    }
+    .slider{
+        height: 80px;
+    }
+    .carousel-item img {
+        height: 80px;
+    }
+}
+
+
+@keyframes slideTop {
+    0%{
+      transform: translateY(100px);
+      opacity: 0;
+    }
+    100%{
+      transform: translateY(0px);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideRight {
+    0%{
+      transform: translateX(-100px);
+      opacity: 0;
+    }
+    100%{
+      transform: translateX(0px);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideLeft {
+    0%{
+      transform: translateX(100px);
+      opacity: 0;
+    }
+    100%{
+      transform: translateX(0px);
+      opacity: 1;
+    }
+  }

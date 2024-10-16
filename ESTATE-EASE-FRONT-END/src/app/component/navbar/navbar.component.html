@@ -1,47 +1,48 @@
- <header class="header">
+<header class="header">
+  <div class="logo">
+    <button class="navbar-brand" (click)="logoClick()" style="padding: 0px; border: none; cursor: pointer;">
+      <img src="../../../assets/Estate Ease Logo2.jpeg" alt="Estate-Ease" height="70px" style="border-radius: 2px;">
+    </button>
+  </div>
 
-    <div class="logo"> <button class="navbar-brand" (click)="logoClick()" style="padding: 0px; border: none; cursor: pointer;">
-      <img src="../../../assets/Estate Ease Logo2.jpeg" alt="Estate-Ease"  height="70px" style="border-radius: 2px;">
-  </button></div>
+  <div class="project-name">Estate-Ease</div>
+  <button class="mobile-nav-toggle" (click)="toggleNavbar()">☰</button> 
 
-    <div class="logo">Estate-Ease</div>
-      <!-- Display user name if logged in -->
-      <span *ngIf="isLoggedIn" class="user-name">Welcome {{username}}</span>
-    <nav class="nav">
-      <a routerLink="/home-page" class="nav-link" routerLinkActive="active">Home</a>
-      <a routerLink="/about-page" class="nav-link" routerLinkActive="active">About</a>
-      <div class="dropdown">
-        <a routerLink="/property-listing" class="nav-link">Property</a>
-        <div class="dropdown-content">
-          <a routerLink="/search">Search Properties</a>
-          <a routerLink="/post-property">Sell/Rent</a>
-          <a routerLink="/property-listing">Buy</a>
-        </div>
-      </div>
-      <a routerLink="/contact" class="nav-link" routerLinkActive="active">Contact</a>
-    </nav>
-    
-    <button *ngIf="isLoggedIn" routerLink="/post-property" class="add-property-btn">Add Property</button>
-    
-    <div class="dropdown profile-section">
-        <div class="profile-icon">
-          <i class="fas fa-user-circle" style="font-size: 35px; color:#000000;margin-right: 25px;"></i>
-          
-          
-        </div>
-      <div class="dropdown-content" [class.show]="propertyDropdownOpen" (click)="togglePropertyDropdown()">
-        <!-- Links visible when logged in -->
-        <ng-container *ngIf="isLoggedIn; else loggedOutLinks">
-          <a routerLink="/user-dashboard">Dashboard</a>
-          <a routerLink="/forgotpass">Change Password</a>
-          <a (click)="logout()">Log out</a>
-        </ng-container>
-        <!-- Links visible when not logged in -->
-        <ng-template #loggedOutLinks>
-          <a routerLink="/login">Login/Register</a>
-          <a (click)="logout()" >Guest Account</a>
-        </ng-template>
+  <!-- Display user name if logged in -->
+  <span *ngIf="isLoggedIn" class="user-name">Welcome {{ username }}</span>
+
+  <nav class="nav" [class.active]="navOpen">
+    <a routerLink="/home-page" class="nav-link link" routerLinkActive="active">Home</a>
+    <a routerLink="/about-page" class="nav-link link" routerLinkActive="active">About</a>
+
+    <div class="dropdown">
+      <a routerLink="/property-listing" class="nav-link link">Property</a>
+      <div class="dropdown-content">
+        <a routerLink="/search" class="link">Search Properties</a>
+        <a routerLink="/post-property" class="link">Sell/Rent</a>
+        <a routerLink="/property-listing" class="link">Buy</a>
       </div>
     </div>
-  </header>
-  
+
+    <a routerLink="/contact" class="nav-link link" routerLinkActive="active">Contact</a>
+  </nav>
+
+  <button *ngIf="isLoggedIn" routerLink="/post-property" class="add-property-btn">Add Property</button>
+
+  <div class="dropdown profile-section">
+    <div class="profile-icon link">
+      <i class="fas fa-user-circle" style="font-size: 35px; color:#000000;margin-right: 25px;"></i>
+    </div>
+    <div class="dropdown-content">
+      <ng-container *ngIf="isLoggedIn; else loggedOutLinks">
+        <a class="link" routerLink="/user-dashboard">Dashboard</a>
+        <a class="link" routerLink="/forgotpass">Change Password</a>
+        <a class="link" (click)="logout()">Log out</a>
+      </ng-container>
+      <ng-template #loggedOutLinks>
+        <a class="link" routerLink="/login">Login/Register</a>
+        <a class="link" (click)="logout()">Guest Account</a>
+      </ng-template>
+    </div>
+  </div>
+</header>

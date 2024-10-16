@@ -39,6 +39,9 @@
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/ngx-spinner/animations/ball-scale-multiple.css",
+              "node_modules/ngx-spinner/animations/square-jelly-box.css",
+              "https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css",
               "src/styles.css"
             ],
           "scripts": [

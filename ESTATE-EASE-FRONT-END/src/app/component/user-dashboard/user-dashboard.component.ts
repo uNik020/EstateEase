@@ -26,7 +26,7 @@ export class UserDashboardComponent implements OnInit, OnDestroy {
   favoriteProperties: Property[] = [];  // favorite properties of the logged-in user
   wishlist: any[] = [];
   loggedInUser: number | any ; //user obj
-  activeSection: string = 'Overview'; // Ensure this matches your section selector
+  activeSection: string = 'Profile'; // Ensure this matches your section selector
   totalPropertiesCount: number = 0;
   activeListingsCount: number = 0;
   transactions: Transaction[] = [];

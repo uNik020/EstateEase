@@ -95,3 +95,17 @@
     font-family:Arial, Helvetica, sans-serif;
   }
   
+  /* MOBILE STYLES */
+@media (max-width: 768px) {
+  *{
+    margin: 0%;
+  }
+  .register-container{
+    margin: 0%;
+    
+  }
+  .register-form{
+   margin-inline:0%;
+   width: 100%;
+  }
+ }

@@ -9,12 +9,12 @@
   
   .property-listing-container h2 {
     font-size: 32px;
-    color: #1a1a1a;
+    color: #000;
   }
   
   .property-listing-container p {
     font-size: 16px;
-    color: #888888;
+    color: #000;
     margin-bottom: 20px;
   }
   
@@ -98,13 +98,13 @@
   
   .property-info h4 {
     font-size: 18px;
-    color: #1a1a1a;
+    color: #000000;
     margin-bottom: 10px;
   }
   
   .property-info p {
     font-size: 14px;
-    color: #888888;
+    color: #000000;
     margin-bottom: 10px;
   }
   
@@ -138,4 +138,94 @@
 /* When favorited */
 .favorite-icon.favorited {
   color: #ff6666; /* Favorite color when clicked */
+}
+
+/* MOBILE STYLES */
+@media (max-width: 768px) {
+ *{
+   margin: 0%;
+ }
+ .property-listing-container{
+  margin-inline:0%;
+  width: 100%;
+ }
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    scale:0.5;
+    /*clip-path: inset(100% 100% 0 0);*/
+  }
+  to {
+    opacity: 1;
+    scale:1;
+    /*clip-path: inset(0 0 0 0);*/
+  }
+}
+
+.property-cards {
+  animation: appear ease-in;
+  animation-timeline: view();
+  animation-range: entry 0% cover 30%;
+}
+
+.filter-buttons {
+  animation: appear ease-in;
+  animation-timeline: view();
+  animation-range: entry 0% cover 30%;
+}
+
+.p{
+    animation: appear ease-in;
+    animation-timeline: view();
+    animation-range: entry 0% cover 30%;
+}
+
+@keyframes slideTop {
+  0%{
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  100%{
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes slideRight {
+  0%{
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  100%{
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes slideLeft {
+  0%{
+    transform: translateX(100px);
+    opacity: 0;
+  }
+  100%{
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}
+
+.p{
+  animation: slideRight 5s ease forwards infinite;
+  animation-delay: 5s;
+}
+
+.h3 .h1 .h2 .h4{
+  animation: slideLeft 5s ease forwards infinite;
+    animation-delay: 5s;
+}
+
+.li{
+  animation: slideTop 5s ease forwards infinite;
+  animation-delay: 5s;
 }
